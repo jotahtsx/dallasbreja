@@ -3,7 +3,6 @@ import { verify } from 'jsonwebtoken'
 
 interface Payload{
     sub: string;
-
 }
 
 export function isAuthenticated(
@@ -32,5 +31,4 @@ export function isAuthenticated(
     }catch(err){
         return res.status(401).end();
     }
-
 }
