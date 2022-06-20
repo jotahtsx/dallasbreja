@@ -1,6 +1,6 @@
 import prismaClient from "../../prima";
 import {compare} from 'bcryptjs';
-import {} from '';
+import {sign} from 'jsonwebtoken';
 
 interface AuthRequest{
     email: string;
