@@ -1,4 +1,4 @@
-import prismaClient from "../../prima";
+import prismaClient from "../../prisma";
 
 class ListCategoryService{
     async execute(){
