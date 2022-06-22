@@ -11,4 +11,4 @@ class ListOrderController{
     }
 }
 
-export {ListOrderService}
+export {ListOrderController}
