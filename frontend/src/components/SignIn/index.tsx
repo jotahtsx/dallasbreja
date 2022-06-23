@@ -1,9 +1,11 @@
 import { Container, Wrapper } from 'styles/components/SignIn'
 
+import Logo from '../../../public/images/logo.svg'
+
 const SignIn = () => (
   <Wrapper>
     <Container>
-      <h1>Dallas Bar</h1>
+      <Logo />
     </Container>
   </Wrapper>
 )
