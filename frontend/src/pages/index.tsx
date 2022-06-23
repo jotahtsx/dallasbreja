@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import Main from 'components/Main'
+import SignIn from 'components/SignIn'
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
       <Head>
         <title>Dallas Bar</title>
       </Head>
-      <Main />
+      <SignIn />
     </>
   )
 }

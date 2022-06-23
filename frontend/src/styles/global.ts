@@ -22,6 +22,10 @@ export const GlobalStyles = createGlobalStyle`
     font: 400 1rem 'Work Sans', sans-serif;
   }
 
+  html, body, #__next {
+    height: 100%;
+  }
+
   button {
     cursor: pointer;
   }
