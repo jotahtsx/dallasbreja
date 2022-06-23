@@ -37,7 +37,23 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="pt-BR">
-        <Head />
+        <Head>
+          <>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link
+              rel="preconnect"
+              href="https://fonts.gstatic.com"
+              crossOrigin=""
+            />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap"
+              rel="stylesheet"
+            />
+            <link rel="shortcut icon" href="/images/icon-512.png" />
+            <link rel="apple-touch-icon" href="/images/icon-512.png" />
+            <meta name="description" content="" />
+          </>
+        </Head>
         <body>
           <Main />
           <NextScript />
