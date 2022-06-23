@@ -19,6 +19,9 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background-color: ${(props) => props.theme.colors.grey};
     color: ${(props) => props.theme.colors.white};
+  }
+
+  body, input, textarea, select, button{
     font: 400 1rem 'Work Sans', sans-serif;
   }
 
@@ -33,5 +36,12 @@ export const GlobalStyles = createGlobalStyle`
   [disabled] {
     opacity: 0.6;
     cursor: not-allowed;
+  }
+
+  a{
+    text-decoration: none;
+    span{
+      font-weight: 700;
+    }
   }
 `
