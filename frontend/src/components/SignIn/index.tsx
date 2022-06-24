@@ -24,12 +24,20 @@ export default function SignIn() {
   async function handleLogin(event: FormEvent) {
     event.preventDefault()
 
+    if (email === '' || password === '') {
+      alert('Preencha os dados')
+    }
+
+    setLoading(true)
+
     const data = {
       email,
       password
     }
 
     await signIn(data)
+
+    setLoading(false)
   }
   return (
     <Wrapper>
@@ -48,7 +56,7 @@ export default function SignIn() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Digite sua senha"
           />
-          <ButtonWrapper type="submit" loading={false}>
+          <ButtonWrapper type="submit" loading={loading}>
             Entrar
           </ButtonWrapper>
           <UseFullLinks>
