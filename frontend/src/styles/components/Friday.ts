@@ -19,7 +19,7 @@ export const Container = styled.div`
   }
 `
 
-export const Login = styled.form`
+export const Form = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;

@@ -1,14 +1,14 @@
 import Head from 'next/head'
 
-import SignIn from 'components/SignIn'
+import SignUp from 'components/Signup'
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Dallas Bar - Entrar</title>
+        <title>Dallas Bar - Efetuar cadastro</title>
       </Head>
-      <SignIn />
+      <SignUp />
     </>
   )
 }
