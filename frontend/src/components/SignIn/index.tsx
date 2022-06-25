@@ -13,6 +13,8 @@ import { ButtonWrapper } from 'styles/components/ui/button'
 
 import { AuthContext } from 'contexts/AuthContext'
 
+import { toast } from 'react-toastify'
+
 export default function SignIn() {
   const { signIn } = useContext(AuthContext)
 
@@ -25,7 +27,7 @@ export default function SignIn() {
     event.preventDefault()
 
     if (email === '' || password === '') {
-      alert('Preencha os dados')
+      toast.dark('❌ Preencha todos os campos')
     }
 
     setLoading(true)

@@ -21,7 +21,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${(props) => props.theme.colors.white};
   }
 
-  body, input, textarea, select, button{
+  body, input, textarea, select, button, .Toastify__toast{
     font: 400 1rem 'Work Sans', sans-serif;
   }
 
