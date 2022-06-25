@@ -12,11 +12,11 @@
 /frontend/out/
 /frontend/build
 /frontend/.DS_Store
+/frontend/*.pem
 /frontend/npm-debug.log*
 /frontend/yarn-debug.log*
 /frontend/yarn-error.log*
-/frontend/.env.local
-/frontend/.env.development.local
-/frontend/.env.test.local
-/frontend/.env.production.local
-/frontend/.env.production.test
+/frontend/.env*.local
+/frontend/.env*.production
+/frontend/*.tsbuildinfo
+/frontend/.vercel

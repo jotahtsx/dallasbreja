@@ -1,23 +1,16 @@
 import Head from 'next/head'
-import { GetServerSideProps } from 'next'
 
-import SignIn from 'components/SignIn'
+type Props = {
+  title: string
+}
 
-export default function Home() {
+export default function Home({ title = 'Dallas Breja' }: Props) {
   return (
     <>
       <Head>
-        <title>Dallas Bar - Entrar</title>
+        <title>Dallas Breja - Home</title>
       </Head>
-      <SignIn />
+      <h1>{title}</h1>
     </>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  console.log('TESTANDO SERVER SIDE PROPS')
-
-  return {
-    props: {}
-  }
 }
