@@ -17,8 +17,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: #181820;
-    color: #ffffff;
+    background-color: ${(props) => props.theme.colors.background};
+    color: ${(props) => props.theme.colors.text};
   }
 
   button {
