@@ -4,11 +4,11 @@ import Image from 'next/image'
 
 import { Container, Form } from 'styles/pages/home'
 
-export default function Home() {
+export default function SignUp() {
   return (
     <>
       <Head>
-        <title>Dallas Breja - Entrar</title>
+        <title>Dallas Breja - Cadastrar</title>
       </Head>
       <Container>
         <Link href="/">
@@ -24,14 +24,15 @@ export default function Home() {
           </a>
         </Link>
         <Form autoComplete="off">
+          <input type="text" placeholder="Digite seu nome" />
           <input type="text" placeholder="Digite seu email" />
           <input type="password" placeholder="Digite sua senha" />
-          <button type="submit">Entrar</button>
+          <button type="submit">Cadastrar</button>
           <div className="links">
             <p>
-              Não tem uma conta?{' '}
-              <Link href="/signup">
-                <a>Cadastre-se</a>
+              Já possui uma conta?{' '}
+              <Link href="/">
+                <a>Entrar</a>
               </Link>
             </p>
           </div>

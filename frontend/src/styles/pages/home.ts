@@ -10,6 +10,9 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 3.125em;
+  @media (min-width: 17.5em) and (max-width: 23.4375em) {
+    padding: 0 0.75em;
+  }
 `
 
 export const Form = styled.form`
