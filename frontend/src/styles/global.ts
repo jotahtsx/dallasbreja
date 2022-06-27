@@ -46,6 +46,12 @@ const GlobalStyle = createGlobalStyle`
   [disabled] {
     opacity: 0.6;
     cursor: not-allowed;
+    &:hover{
+      background-color: ${(props) => props.theme.colors.primary} !important
+    }
+    svg {
+      animation: animate 2s infinite;
+    }
   }
 `
 

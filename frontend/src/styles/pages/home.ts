@@ -53,19 +53,6 @@ export const Form = styled.form`
   input::placeholder {
     color: ${(props) => props.theme.colors.secondary};
   }
-  button {
-    height: 3.125em;
-    background-color: ${(props) => props.theme.colors.primary};
-    font-size: 1rem;
-    border: none;
-    border-radius: 0.625em;
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: 0.5s;
-    &:hover {
-      background-color: rgba(236, 174, 4, 0.8);
-    }
-  }
   p {
     text-align: center;
     font-weight: 300;

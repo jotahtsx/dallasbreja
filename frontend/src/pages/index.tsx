@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { Container, Form } from 'styles/pages/home'
+import { Btn } from 'components/ui/Button'
 
 import { AuthContext } from 'contexts/AuthContext'
 
@@ -18,12 +19,21 @@ export default function Home() {
   async function handleLogin(event: FormEvent) {
     event.preventDefault()
 
+    if (email === '' || password === '') {
+      alert('O botão ficará inativo pela falta do preenchimento dos dados')
+      return
+    }
+
+    setLoading(true)
+
     const data = {
       email,
       password,
     }
 
     await signIn(data)
+
+    setLoading(false)
   }
 
   return (
@@ -57,7 +67,15 @@ export default function Home() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit">Entrar</button>
+          {email === '' || password === '' ? (
+            <Btn disabled type="submit">
+              Entrar
+            </Btn>
+          ) : (
+            <Btn type="submit" loading={loading}>
+              Entrar
+            </Btn>
+          )}
           <div className="links">
             <p>
               Não tem uma conta?{' '}
