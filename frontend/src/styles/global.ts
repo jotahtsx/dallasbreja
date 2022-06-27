@@ -7,6 +7,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html, body, #__next {
+    height: 100%;
+  }
+
   html {
     @media(max-width: 1080px) {
       font-size: 93.75%;
@@ -28,6 +32,11 @@ const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6, strong {
     font-weight: 600;
+  }
+
+  a{
+    text-decoration: none;
+    color: inherit;
   }
 
   button {
