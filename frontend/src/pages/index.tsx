@@ -20,7 +20,7 @@ export default function Home() {
     event.preventDefault()
 
     if (email === '' || password === '') {
-      alert('O botão ficará inativo pela falta do preenchimento dos dados')
+      alert('Um ou mais campos não foram preenchidos')
       return
     }
 
