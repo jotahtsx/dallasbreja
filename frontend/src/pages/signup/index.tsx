@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent, useContext } from 'react'
 
 import Head from 'next/head'
 import Link from 'next/link'
@@ -7,7 +7,11 @@ import Image from 'next/image'
 import { Container, Form } from 'styles/pages/home'
 import { Btn } from 'components/ui/Button'
 
+import { AuthContext } from 'contexts/AuthContext'
+
 export default function SignUp() {
+  const { signUp } = useContext(AuthContext)
+
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -23,6 +27,16 @@ export default function SignUp() {
     }
 
     setLoading(true)
+
+    const data = {
+      name,
+      email,
+      password,
+    }
+
+    await signUp(data)
+
+    setLoading(false)
   }
 
   return (
