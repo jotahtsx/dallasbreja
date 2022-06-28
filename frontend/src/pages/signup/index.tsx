@@ -8,6 +8,7 @@ import { Container, Form } from 'styles/pages/home'
 import { Btn } from 'components/ui/Button'
 
 import { AuthContext } from 'contexts/AuthContext'
+import { toast } from 'react-toastify'
 
 export default function SignUp() {
   const { signUp } = useContext(AuthContext)
@@ -22,7 +23,7 @@ export default function SignUp() {
     event.preventDefault()
 
     if (name === '' || email === '' || password === '') {
-      alert('Um ou mais campos não foram preenchidos')
+      toast('❌ Preencha todos os campos')
       return
     }
 
@@ -76,9 +77,15 @@ export default function SignUp() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Digite sua senha"
           />
-          <Btn type="submit" loading={loading}>
-            Cadastrar
-          </Btn>
+          {name === '' || email === '' || password === '' ? (
+            <Btn disabled type="submit" loading={loading}>
+              Cadastrar
+            </Btn>
+          ) : (
+            <Btn type="submit" loading={loading}>
+              Cadastrar
+            </Btn>
+          )}
           <div className="links">
             <p>
               Já possui uma conta?{' '}

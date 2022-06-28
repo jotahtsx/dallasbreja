@@ -25,9 +25,17 @@ const GlobalStyle = createGlobalStyle`
     color: ${(props) => props.theme.colors.text};
   }
 
-  body, input, textarea, button {
+  body, input, textarea, button, .Toastify__toast {
     font-family: 'Work Sans', sans-serif;
     font-weight: 400;
+  }
+
+  .Toastify__toast{
+    font-size: 0.938rem;
+  }
+
+  .Toastify__progress-bar{
+    background-color: ${(props) => props.theme.colors.primary};
   }
 
   h1, h2, h3, h4, h5, h6, strong {
