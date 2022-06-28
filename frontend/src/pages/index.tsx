@@ -1,6 +1,7 @@
 import { useContext, FormEvent, useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import { canSSRGuest } from 'utils/canSSRGuest'
 import Image from 'next/image'
 
 import { Container, Form } from 'styles/pages/home'
@@ -90,3 +91,9 @@ export default function Home() {
     </>
   )
 }
+
+export const getServerSideProps = canSSRGuest(async (ctx) => {
+  return {
+    props: {},
+  }
+})
