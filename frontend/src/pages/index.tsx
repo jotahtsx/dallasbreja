@@ -92,6 +92,7 @@ export default function Home() {
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const getServerSideProps = canSSRGuest(async (ctx) => {
   return {
     props: {},

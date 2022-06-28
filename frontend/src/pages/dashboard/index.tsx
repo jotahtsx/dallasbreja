@@ -1,6 +1,5 @@
 import Head from 'next/head'
-
-import { canSSRAuth } from 'utils/canSSRAuth'
+import { canSSRAuth } from '../../utils/canSSRAuth'
 
 export default function Dashboard() {
   return (
@@ -8,11 +7,11 @@ export default function Dashboard() {
       <Head>
         <title>Dallas Breja - Visão Geral</title>
       </Head>
-      <h1>dashboard</h1>
     </>
   )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const getServerSideProps = canSSRAuth(async (ctx) => {
   return {
     props: {},
