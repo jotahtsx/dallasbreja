@@ -15,7 +15,7 @@ export function canSSRGuest<P>(fn: GetServerSideProps<P>) {
     if (cookies['@dallasfridayauth.token']) {
       return {
         redirect: {
-          destination: '/dashboard',
+          destination: 'dashboard',
           permanent: false,
         },
       }

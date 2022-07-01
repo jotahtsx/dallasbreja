@@ -7,44 +7,43 @@ import { FaSignOutAlt } from 'react-icons/fa'
 import { AuthContext } from 'contexts/AuthContext'
 
 import Image from 'next/image'
+import { ActiveLink } from 'components/ActiveLink'
 
 export function Header() {
   const { signOut } = useContext(AuthContext)
-
   return (
     <Wrapper>
       <Container>
-        <Link href="/">
-          <a>
+        <Link href="/dashboard">
+          <a className="logo">
             <Image
-              src="/images/logo.svg"
+              src="/images/logo-horizontal.svg"
               alt="Dallas Breja"
               title="Dallas Breja"
-              width="102"
-              height="70"
+              width="193.43"
+              height="31.89"
               priority={true}
             />
           </a>
         </Link>
         <Nav>
-          <li>
-            <Link href="">
-              <a>O cardápio</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="">
-              <a>Cadastrar categoria</a>
-            </Link>
-          </li>
-          <li className="signOut">
-            <Link href="">
+          <ActiveLink activeClassName="active" href="/dashboard">
+            <a>Home</a>
+          </ActiveLink>
+          <ActiveLink activeClassName="active" href="/">
+            <a>Cardápio</a>
+          </ActiveLink>
+          <ActiveLink activeClassName="active" href="/categorias">
+            <a>Categorias</a>
+          </ActiveLink>
+          <div className="signOut">
+            <Link href="/">
               <a onClick={signOut}>
-                <span>Sair do sistema</span>
+                <span>Deslogar</span>
                 <FaSignOutAlt size={16} />
               </a>
             </Link>
-          </li>
+          </div>
         </Nav>
       </Container>
     </Wrapper>

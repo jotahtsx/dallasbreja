@@ -39,7 +39,7 @@ export default class MyDocument extends Document {
             crossOrigin=""
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600&display=swap"
             rel="stylesheet"
           />
           <link rel="shortcut icon" href="/images/favicon.svg" />

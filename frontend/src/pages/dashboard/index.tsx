@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { canSSRAuth } from '../../utils/canSSRAuth'
+import { canSSRAuth } from 'utils/canSSRAuth'
 
 import { Header } from 'components/Header'
 
