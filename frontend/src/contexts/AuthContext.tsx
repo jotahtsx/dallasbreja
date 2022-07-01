@@ -98,7 +98,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       //Passa para as próximas requisições o token que foi gerado
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
-      toast('✔️ Logado com êxito')
+      toast('✔️ Logado com êxito.')
 
       Router.push('/dashboard')
     } catch (err) {

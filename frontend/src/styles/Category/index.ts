@@ -2,8 +2,46 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
 `
 
-export const Container = styled.div``
+export const Container = styled.form`
+  width: 100%;
+  max-width: 22.25em;
+  margin: 0 auto;
+  display: flex;
+  gap: 1.25em;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  p {
+    font-size: 0.813rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.088rem;
+    font-weight: 300;
+    text-align: center;
+    color: ${(props) => props.theme.colors.text};
+  }
+  input[type='text'] {
+    width: 100%;
+    height: 3.125em;
+    border: 2px solid ${(props) => props.theme.colors.grey};
+    border-radius: 0.625em;
+    padding: 0 1.25em;
+    transition: 0.5s;
+    outline: none;
+    text-align: center;
+  }
+  input[type='text']:focus {
+    border: 2px solid ${(props) => props.theme.colors.primary};
+  }
+  input {
+    color: ${(props) => props.theme.colors.lightGrey};
+    font-size: 1.063rem;
+  }
+  input::placeholder {
+    color: ${(props) => props.theme.colors.lightGrey};
+  }
+`

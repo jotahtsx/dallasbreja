@@ -30,6 +30,10 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
+  input, textarea{
+    outline: none;
+  }
+
   .Toastify__toast{
     font-size: 0.938rem;
   }
