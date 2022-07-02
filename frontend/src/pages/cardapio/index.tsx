@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Head from 'next/head'
 
 import SimpleBar from 'simplebar-react'
@@ -17,7 +17,13 @@ import { Btn } from 'components/ui/Button'
 
 import 'simplebar-react/dist/simplebar.min.css'
 
+import useClickOutside from 'utils/useClickOutside'
+
 export default function Product() {
+  const ref = useRef(null)
+
+  useClickOutside(ref, () => setIsDropDownVisible(false))
+
   const [isDropDownVisible, setIsDropDownVisible] = useState(false)
 
   const [itemsList] = useState([
@@ -53,7 +59,7 @@ export default function Product() {
             Escolha um nome para identificar o seu produto e a imagem que deseja
             adicionar
           </p>
-          <Dropdown>
+          <Dropdown ref={ref}>
             <div
               className={
                 'dropdown-selection ' + (isDropDownVisible ? 'visible' : '')
