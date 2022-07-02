@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
 `
@@ -10,7 +9,7 @@ export const Wrapper = styled.div`
 export const Container = styled.form`
   width: 100%;
   max-width: 22.25em;
-  margin: 0 auto;
+  margin: 3.75em 0;
   display: flex;
   gap: 1.25em;
   align-items: center;
@@ -24,10 +23,45 @@ export const Container = styled.form`
     text-align: center;
     color: ${(props) => props.theme.colors.text};
   }
+
+  .labelCover {
+    width: 100%;
+    height: 15.625em;
+    border-radius: 0.625em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: ${(props) => props.theme.colors.darkGrey};
+    input {
+      display: none;
+    }
+    .preview {
+      width: 100%;
+      height: 15.625em;
+      object-fit: cover;
+      border-radius: 0.625em;
+      background-position: center;
+    }
+  }
+
+  .labelCover,
+  > .labelIcon {
+    opacity: 0.5;
+    transition: all 0.6s;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .labelIcon {
+    position: absolute;
+  }
+
   input[type='text'] {
     width: 100%;
     height: 3.75em;
-    border: 2px solid ${(props) => props.theme.colors.grey};
+    border: 2px solid ${(props) => props.theme.colors.white};
     border-radius: 0.625em;
     padding: 0 1.25em;
     transition: 0.5s;
@@ -45,10 +79,11 @@ export const Container = styled.form`
   }
   textarea {
     width: 100%;
+    height: 7.5em;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid ${(props) => props.theme.colors.grey};
+    border: 2px solid ${(props) => props.theme.colors.white};
     border-radius: 0.625em;
     padding: 1.25em;
     transition: 0.5s;
@@ -75,7 +110,7 @@ export const Dropdown = styled.div`
     height: 3.75em;
     display: flex;
     align-items: center;
-    border: 2px solid ${(props) => props.theme.colors.grey};
+    border: 2px solid ${(props) => props.theme.colors.white};
     background-color: ${(props) => props.theme.colors.white};
     color: ${(props) => props.theme.colors.dark};
     cursor: pointer;
@@ -108,7 +143,9 @@ export const ItemsHolder = styled.div`
   padding: 0.375em;
   background-color: ${(props) => props.theme.colors.white};
   position: absolute;
-  top: 138%;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  top: 137%;
   &::after {
     content: '';
     position: absolute;

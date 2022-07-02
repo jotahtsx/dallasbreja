@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, ChangeEvent } from 'react'
 import Head from 'next/head'
 
 import SimpleBar from 'simplebar-react'
@@ -19,7 +19,12 @@ import 'simplebar-react/dist/simplebar.min.css'
 
 import useClickOutside from 'utils/useClickOutside'
 
+import { FiUpload } from 'react-icons/fi'
+
 export default function Product() {
+  const [coverUrl, setCoverUrl] = useState('')
+  const [imageCover, setImageCover] = useState(null)
+
   const ref = useRef(null)
 
   useClickOutside(ref, () => setIsDropDownVisible(false))
@@ -46,6 +51,23 @@ export default function Product() {
 
   const [selectedItemIndex, setSelectedItemIndex] = useState(null)
 
+  function handleFile(e: ChangeEvent<HTMLInputElement>) {
+    if (!e.target.files) {
+      return
+    }
+
+    const image = e.target.files[0]
+
+    if (!image) {
+      return
+    }
+
+    if (image.type === 'image/jpeg' || image.type === 'image/png') {
+      setImageCover(image)
+      setCoverUrl(URL.createObjectURL(e.target.files[0]))
+    }
+  }
+
   return (
     <>
       <Head>
@@ -56,9 +78,29 @@ export default function Product() {
         <Container>
           <h2>Cardápio</h2>
           <p>
-            Escolha um nome para identificar o seu produto e a imagem que deseja
-            adicionar
+            Envie uma imagem, selecione uma categoria e escolha um título para
+            nomear o seu produto
           </p>
+          <label className="labelCover">
+            <div className="labelIcon">
+              <FiUpload size={35} color="#FFF" />
+            </div>
+            <input
+              type="file"
+              accept="image/png, image/jpeg"
+              onChange={handleFile}
+            />
+
+            {coverUrl && (
+              <img
+                className="preview"
+                src={coverUrl}
+                alt=""
+                width="100%"
+                height="150"
+              />
+            )}
+          </label>
           <Dropdown ref={ref}>
             <div
               className={
@@ -92,7 +134,7 @@ export default function Product() {
               <></>
             )}
           </Dropdown>
-          <input type="text" placeholder="Digite um nome para o produto" />
+          <input type="text" placeholder="Digite um título para o produto" />
           <input type="text" placeholder="Preço do produto" />
           <textarea placeholder="Faça uma pequena descrição do produto que será cadastrado no seu cardápio" />
           <Btn type="submit">Salvar</Btn>
