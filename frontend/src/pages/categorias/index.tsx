@@ -2,11 +2,13 @@ import { useState, FormEvent } from 'react'
 import Head from 'next/head'
 
 import { Header } from 'components/Header'
-import { Container, Wrapper } from 'styles/Category'
+import { Container, Wrapper } from 'styles/pages/category'
 import { Btn } from 'components/ui/Button'
 
 import { setupApiClient } from '../../services/api'
 import { toast } from 'react-toastify'
+
+import { canSSRAuth } from 'utils/canSSRAuth'
 
 export default function Category() {
   const [name, setName] = useState('')
@@ -30,7 +32,7 @@ export default function Category() {
   return (
     <>
       <Head>
-        <title>Dallas Breja - Visão Geral</title>
+        <title>Dallas Breja - Categorias</title>
       </Head>
       <Header />
       <Wrapper>
@@ -43,8 +45,9 @@ export default function Category() {
           <input
             type="text"
             value={name}
+            id={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Digite o nome para a categoria"
+            placeholder="Digite um nome para a categoria"
           />
           <Btn type="submit">Salvar</Btn>
         </Container>
@@ -52,3 +55,9 @@ export default function Category() {
     </>
   )
 }
+
+export const getServerSideProps = canSSRAuth(async () => {
+  return {
+    props: {},
+  }
+})

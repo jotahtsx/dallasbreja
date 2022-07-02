@@ -30,7 +30,7 @@ export function Header() {
           <ActiveLink activeClassName="active" href="/dashboard">
             <a>Home</a>
           </ActiveLink>
-          <ActiveLink activeClassName="active" href="/">
+          <ActiveLink activeClassName="active" href="/cardapio">
             <a>Cardápio</a>
           </ActiveLink>
           <ActiveLink activeClassName="active" href="/categorias">

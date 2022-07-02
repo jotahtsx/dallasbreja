@@ -26,20 +26,19 @@ export const Container = styled.form`
   }
   input[type='text'] {
     width: 100%;
-    height: 3.125em;
+    height: 3.75em;
     border: 2px solid ${(props) => props.theme.colors.grey};
     border-radius: 0.625em;
     padding: 0 1.25em;
     transition: 0.5s;
     outline: none;
-    text-align: center;
   }
   input[type='text']:focus {
     border: 2px solid ${(props) => props.theme.colors.primary};
   }
   input {
     color: ${(props) => props.theme.colors.lightGrey};
-    font-size: 1.063rem;
+    font-size: 0.938rem;
   }
   input::placeholder {
     color: ${(props) => props.theme.colors.lightGrey};
