@@ -1,4 +1,4 @@
-import { useRef, useState, ChangeEvent } from 'react'
+import { useRef, useState, ChangeEvent, FormEvent } from 'react'
 import Head from 'next/head'
 
 import SimpleBar from 'simplebar-react'
@@ -21,33 +21,34 @@ import useClickOutside from 'utils/useClickOutside'
 
 import { FiUpload } from 'react-icons/fi'
 
-export default function Product() {
+import { toast } from 'react-toastify'
+
+import { setupApiClient } from 'services/api'
+
+type ItemProps = {
+  id: string
+  name: string
+}
+
+interface CategoryProps {
+  categoryList: ItemProps[]
+}
+
+export default function Product({ categoryList }: CategoryProps) {
+  const [name, setName] = useState('')
+  const [price, setPrice] = useState('')
+  const [description, setDescription] = useState('')
+
   const [coverUrl, setCoverUrl] = useState('')
   const [imageCover, setImageCover] = useState(null)
+
+  const [categories, setCategories] = useState(categoryList || [])
 
   const ref = useRef(null)
 
   useClickOutside(ref, () => setIsDropDownVisible(false))
 
   const [isDropDownVisible, setIsDropDownVisible] = useState(false)
-
-  const [itemsList] = useState([
-    {
-      id: 'a0b0f9ac-0d1a-4689-96ff-1250c35aa325',
-      name: 'Bebidas',
-      value: 'bebidas',
-    },
-    {
-      id: '597320f4-c7a5-49a1-8aa8-aea2970fc12b',
-      name: 'Pratos',
-      value: 'pratos',
-    },
-    {
-      id: '0a715051-b6f8-4c2e-bb87-eeb7f50fe622',
-      name: 'Tira Gostos',
-      value: 'tira-gostos',
-    },
-  ])
 
   const [selectedItemIndex, setSelectedItemIndex] = useState(null)
 
@@ -68,6 +69,49 @@ export default function Product() {
     }
   }
 
+  function handleChangeCategory(event) {
+    setSelectedItemIndex(event.target.value)
+  }
+
+  async function handleRegister(event: FormEvent) {
+    event.preventDefault()
+
+    try {
+      const data = new FormData()
+
+      if (
+        name === '' ||
+        price === '' ||
+        description === '' ||
+        imageCover === null
+      ) {
+        toast('Preencha todos os campos')
+        return
+      }
+
+      data.append('name', name)
+      data.append('price', price)
+      data.append('description', description)
+      data.append('category_id', categories[selectedItemIndex].id)
+      data.append('file', imageCover)
+
+      const apiClient = setupApiClient()
+
+      await apiClient.post('/product', data)
+
+      toast('Cadastro realizado com sucesso')
+    } catch (err) {
+      console.log(err)
+      toast('Falha ao cadastrar produto')
+    }
+
+    setName('')
+    setPrice('')
+    setDescription('')
+    setImageCover(null)
+    setCoverUrl('')
+  }
+
   return (
     <>
       <Head>
@@ -75,7 +119,7 @@ export default function Product() {
       </Head>
       <Header />
       <Wrapper>
-        <Container>
+        <Container onSubmit={handleRegister}>
           <h2>Cardápio</h2>
           <p>
             Envie uma imagem, selecione uma categoria e escolha um título para
@@ -111,19 +155,19 @@ export default function Product() {
               }}
             >
               {selectedItemIndex !== null
-                ? itemsList[selectedItemIndex].name
+                ? categories[selectedItemIndex].name
                 : 'Selecione uma categoria'}
             </div>
             {isDropDownVisible ? (
               <ItemsHolder>
                 <SimpleBar style={{ maxHeight: 120 }}>
-                  {itemsList.map((item, index) => (
+                  {categories.map((item, index) => (
                     <DropDownItem
                       onClick={() => {
                         setSelectedItemIndex(index)
                         setIsDropDownVisible(false)
                       }}
-                      key={item.value}
+                      key={item.id}
                     >
                       {item.name}
                     </DropDownItem>
@@ -134,9 +178,23 @@ export default function Product() {
               <></>
             )}
           </Dropdown>
-          <input type="text" placeholder="Digite um título para o produto" />
-          <input type="text" placeholder="Preço do produto" />
-          <textarea placeholder="Faça uma pequena descrição do produto que será cadastrado no seu cardápio" />
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Digite um título para o produto"
+          />
+          <input
+            type="text"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            placeholder="Preço do produto"
+          />
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Faça uma pequena descrição do produto que será cadastrado no seu cardápio"
+          />
           <Btn type="submit">Salvar</Btn>
         </Container>
       </Wrapper>
@@ -144,9 +202,16 @@ export default function Product() {
   )
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const getServerSideProps = canSSRAuth(async (ctx) => {
+  const apiClient = setupApiClient(ctx)
+
+  const response = await apiClient.get('/category')
+
+  // console.log(response.data)
+
   return {
-    props: {},
+    props: {
+      categoryList: response.data,
+    },
   }
 })
