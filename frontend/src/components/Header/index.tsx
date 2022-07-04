@@ -1,16 +1,11 @@
-import { useContext } from 'react'
 import Link from 'next/link'
 
-import { Wrapper, Container, Nav } from 'styles/Header'
-import { FaSignOutAlt } from 'react-icons/fa'
-
-import { AuthContext } from 'contexts/AuthContext'
+import { Wrapper, Container } from 'styles/Header'
 
 import Image from 'next/image'
-import { ActiveLink } from 'components/ActiveLink'
+import { Navbar } from './Navbar'
 
 export function Header() {
-  const { signOut } = useContext(AuthContext)
   return (
     <Wrapper>
       <Container>
@@ -26,25 +21,7 @@ export function Header() {
             />
           </a>
         </Link>
-        <Nav>
-          <ActiveLink activeClassName="active" href="/dashboard">
-            <a>Home</a>
-          </ActiveLink>
-          <ActiveLink activeClassName="active" href="/cardapio">
-            <a>Cardápio</a>
-          </ActiveLink>
-          <ActiveLink activeClassName="active" href="/categorias">
-            <a>Categorias</a>
-          </ActiveLink>
-          <div className="signOut">
-            <Link href="/">
-              <a onClick={signOut}>
-                <span>Deslogar</span>
-                <FaSignOutAlt size={16} />
-              </a>
-            </Link>
-          </div>
-        </Nav>
+        <Navbar />
       </Container>
     </Wrapper>
   )

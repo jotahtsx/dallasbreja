@@ -14,6 +14,10 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (min-width: 17.5em) and (max-width: 80em) {
+    max-width: 100%;
+    padding: 0 1.25rem;
+  }
   .logo {
     line-height: 0;
   }
@@ -23,6 +27,9 @@ export const Nav = styled.nav`
   list-style-type: none;
   display: flex;
   gap: 2.5em;
+  @media (min-width: 17.5em) and (max-width: 33.75em) {
+    display: none;
+  }
   a {
     transition: ease-in 300ms;
     height: 4.375em;
@@ -58,5 +65,19 @@ export const Nav = styled.nav`
         margin-top: 0.15625em;
       }
     }
+  }
+`
+
+export const ButtonMobile = styled.button`
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  svg {
+    fill: ${(props) => props.theme.colors.white};
+  }
+
+  @media (min-width: 33.8125em) and (max-width: 120em) {
+    display: none;
   }
 `

@@ -15,6 +15,19 @@ export const Container = styled.form`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  @media (min-width: 17.5em) and (max-width: 80em) {
+    max-width: 100%;
+    padding: 0 1.25rem;
+  }
+  .headerPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h2 {
+      margin-bottom: 0.3125em;
+    }
+  }
   p {
     font-size: 0.813rem;
     line-height: 1.5rem;

@@ -42,7 +42,7 @@ export default function Product({ categoryList }: CategoryProps) {
   const [coverUrl, setCoverUrl] = useState('')
   const [imageCover, setImageCover] = useState(null)
 
-  const [categories, setCategories] = useState(categoryList || [])
+  const [categories] = useState(categoryList || [])
 
   const ref = useRef(null)
 
@@ -69,6 +69,7 @@ export default function Product({ categoryList }: CategoryProps) {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function handleChangeCategory(event) {
     setSelectedItemIndex(event.target.value)
   }
@@ -120,11 +121,13 @@ export default function Product({ categoryList }: CategoryProps) {
       <Header />
       <Wrapper>
         <Container onSubmit={handleRegister}>
-          <h2>Cardápio</h2>
-          <p>
-            Envie uma imagem, selecione uma categoria e escolha um título para
-            nomear o seu produto
-          </p>
+          <div className="headerPage">
+            <h2>Cardápio</h2>
+            <p>
+              Envie uma imagem, selecione uma categoria e escolha um título para
+              nomear o seu produto
+            </p>
+          </div>
           <label className="labelCover">
             <div className="labelIcon">
               <FiUpload size={35} color="#FFF" />

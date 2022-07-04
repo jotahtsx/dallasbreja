@@ -1,6 +1,13 @@
 import Head from 'next/head'
 import { canSSRAuth } from 'utils/canSSRAuth'
 
+import {
+  Container,
+  Wrapper,
+  ListOrders,
+  OrderItem,
+} from 'styles/pages/dashboard'
+
 import { Header } from 'components/Header'
 
 export default function Dashboard() {
@@ -10,6 +17,32 @@ export default function Dashboard() {
         <title>Dallas Breja - Visão Geral</title>
       </Head>
       <Header />
+
+      <Wrapper>
+        <Container>
+          <div className="headerPage">
+            <h2>Últimos pedidos</h2>
+            <p>Acompanhe aqui as solicitações de pedidos em tempo real</p>
+          </div>
+          <ListOrders>
+            <OrderItem>
+              <button>
+                <span>Mesa 38</span>
+              </button>
+            </OrderItem>
+            <OrderItem>
+              <button>
+                <span>Mesa 38</span>
+              </button>
+            </OrderItem>
+            <OrderItem>
+              <button>
+                <span>Mesa 38</span>
+              </button>
+            </OrderItem>
+          </ListOrders>
+        </Container>
+      </Wrapper>
     </>
   )
 }

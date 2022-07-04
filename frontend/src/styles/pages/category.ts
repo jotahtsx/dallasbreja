@@ -16,6 +16,10 @@ export const Container = styled.form`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  @media (min-width: 17.5em) and (max-width: 33.75em) {
+    max-width: 100%;
+    padding: 0 1.25rem;
+  }
   p {
     font-size: 0.813rem;
     line-height: 1.5rem;
@@ -29,7 +33,7 @@ export const Container = styled.form`
     height: 3.75em;
     border: 2px solid ${(props) => props.theme.colors.grey};
     border-radius: 0.625em;
-    padding: 0 1.25em;
+    padding: 0 3.75em;
     transition: 0.5s;
     outline: none;
   }
