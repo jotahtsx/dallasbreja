@@ -16,6 +16,7 @@ import { setupApiClient } from 'services/api'
 import { ModalOrder } from 'components/ModalOrder'
 
 import Modal from 'react-modal'
+import { FiRefreshCw } from 'react-icons/fi'
 
 type OrderProps = {
   id: string
@@ -50,13 +51,20 @@ export type OrderItemProps = {
 }
 
 export default function Dashboard({ orders }: HomeProps) {
-  const [orderList] = useState(orders || [])
+  const [orderList, setOrderList] = useState(orders || [])
 
   const [modalItem, setModalItem] = useState<OrderItemProps[]>()
   const [modalVisible, setModalVisible] = useState(false)
 
   function handleCloseModal() {
     setModalVisible(false)
+  }
+
+  async function handleRefreshOrders() {
+    const apiClient = setupApiClient()
+
+    const response = await apiClient.get('/orders')
+    setOrderList(response.data)
   }
 
   async function handleOpenModalView(id: string) {
@@ -71,8 +79,16 @@ export default function Dashboard({ orders }: HomeProps) {
     setModalVisible(true)
   }
 
-  function handleFinishDialogModal(id: string) {
-    alert('FECHANDO O PEDIDO ' + id)
+  async function handleFinishItem(id: string) {
+    const apiClient = setupApiClient()
+    await apiClient.put('/order/finish', {
+      order_id: id,
+    })
+
+    const response = await apiClient.get('/orders')
+
+    setOrderList(response.data)
+    setModalVisible(false)
   }
 
   Modal.setAppElement('#__next')
@@ -87,10 +103,19 @@ export default function Dashboard({ orders }: HomeProps) {
       <Wrapper>
         <Container>
           <div className="headerPage">
-            <h2>Últimos pedidos</h2>
+            <h2>
+              Últimos pedidos{' '}
+              <button onClick={handleRefreshOrders}>
+                <FiRefreshCw size={20} />
+              </button>
+            </h2>
             <p>Acompanhe aqui as solicitações de pedidos em tempo real</p>
           </div>
           <ListOrders>
+            {orderList.length === 0 && (
+              <p className="notFound">Nenhum pedido aberto encontrado.</p>
+            )}
+
             {orderList.map((item) => (
               <OrderItem key={item.id}>
                 <button onClick={() => handleOpenModalView(item.id)}>
@@ -104,6 +129,7 @@ export default function Dashboard({ orders }: HomeProps) {
               isOpen={modalVisible}
               onRequestClose={handleCloseModal}
               order={modalItem}
+              handleFinishOrder={handleFinishItem}
             />
           )}
         </Container>

@@ -26,7 +26,15 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     h2 {
-      margin-bottom: 0.3125em;
+      display: flex;
+      align-items: center;
+      gap: 0.3125em;
+    }
+    button {
+      width: auto;
+      display: flex;
+      align-items: center;
+      color: ${(props) => props.theme.colors.white};
     }
   }
   button {
@@ -50,6 +58,13 @@ export const ListOrders = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.9375em;
+  .notFound {
+    font-size: 1rem;
+    width: 100%;
+    padding: 1em;
+    border-radius: 0.375em;
+    background-color: ${(props) => props.theme.colors.darkBlue};
+  }
 `
 
 export const OrderItem = styled.li`
