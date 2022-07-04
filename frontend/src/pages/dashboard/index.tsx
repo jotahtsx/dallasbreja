@@ -28,8 +28,8 @@ interface HomeProps {
 export default function Dashboard({ orders }: HomeProps) {
   const [orderList] = useState(orders || [])
 
-  function handleOpenModalView() {
-    alert('abrindo detalhes do pedido')
+  function handleOpenModalView(id: string) {
+    alert('id : ' + id)
   }
 
   return (
@@ -48,7 +48,7 @@ export default function Dashboard({ orders }: HomeProps) {
           <ListOrders>
             {orderList.map((item) => (
               <OrderItem key={item.id}>
-                <button onClick={() => handleOpenModalView()}>
+                <button onClick={() => handleOpenModalView(item.id)}>
                   <span>Mesa {item.table}</span>
                 </button>
               </OrderItem>
