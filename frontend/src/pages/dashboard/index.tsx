@@ -13,6 +13,10 @@ import { Header } from 'components/Header'
 
 import { setupApiClient } from 'services/api'
 
+import { ModalOrder } from 'components/ModalOrder'
+
+import Modal from 'react-modal'
+
 type OrderProps = {
   id: string
   table: string | number
@@ -25,12 +29,53 @@ interface HomeProps {
   orders: OrderProps[]
 }
 
+export type OrderItemProps = {
+  id: string
+  amount: number
+  order_id: string
+  product_id: string
+  product: {
+    id: string
+    name: string
+    description: string
+    price: string
+    banner: string
+  }
+  order: {
+    id: string
+    table: string
+    status: boolean
+    name: string | null
+  }
+}
+
 export default function Dashboard({ orders }: HomeProps) {
   const [orderList] = useState(orders || [])
 
-  function handleOpenModalView(id: string) {
-    alert('id : ' + id)
+  const [modalItem, setModalItem] = useState<OrderItemProps[]>()
+  const [modalVisible, setModalVisible] = useState(false)
+
+  function handleCloseModal() {
+    setModalVisible(false)
   }
+
+  async function handleOpenModalView(id: string) {
+    const apiClient = setupApiClient()
+    const response = await apiClient.get('/order/details', {
+      params: {
+        order_id: id,
+      },
+    })
+
+    setModalItem(response.data)
+    setModalVisible(true)
+  }
+
+  function handleFinishDialogModal(id: string) {
+    alert('FECHANDO O PEDIDO ' + id)
+  }
+
+  Modal.setAppElement('#__next')
 
   return (
     <>
@@ -54,6 +99,13 @@ export default function Dashboard({ orders }: HomeProps) {
               </OrderItem>
             ))}
           </ListOrders>
+          {modalVisible && (
+            <ModalOrder
+              isOpen={modalVisible}
+              onRequestClose={handleCloseModal}
+              order={modalItem}
+            />
+          )}
         </Container>
       </Wrapper>
     </>
