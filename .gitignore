@@ -20,3 +20,17 @@
 /frontend/.env*.production
 /frontend/*.tsbuildinfo
 /frontend/.vercel
+
+# mobile
+/mobile/node_modules
+/mobile/.expo/
+/mobile/dist/
+/mobile/npm-debug.*
+/mobile/*.jks
+/mobile/*.p8
+/mobile/*.p12
+/mobile/*.key
+/mobile/*.mobileprovision
+/mobile/*.orig.*
+/mobile/web-build/
+/mobile/.DS_Store
