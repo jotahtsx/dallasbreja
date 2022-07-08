@@ -2,7 +2,8 @@ import React, {useState, createContext, ReactNode} from 'react'
 
 type AuthContextData = {
     user: UserProps
-    isAthenticated: boolean
+    isAthenticated: boolean,
+    signIn: (credentials: SignInProps) => Promise<void>
 }
 
 type UserProps = {
@@ -14,6 +15,11 @@ type UserProps = {
 
 type AuthProviderProps = {
     children: ReactNode
+}
+
+type SignInProps = {
+    email: string
+    password: string
 }
 
 export const AuthContext = createContext({} as AuthContextData)
@@ -29,8 +35,13 @@ export function AuthProvider({children}: AuthProviderProps){
 
     const isAthenticated = !!user.name
 
+    async function signIn({email, password}: SignInProps){
+        console.log(email)
+        console.log(password)
+    }
+
     return(
-        <AuthContext.Provider value={{user, isAthenticated}}>
+        <AuthContext.Provider value={{user, isAthenticated, signIn}}>
             {children}
         </AuthContext.Provider>
     )
