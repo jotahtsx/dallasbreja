@@ -1,4 +1,4 @@
-import React, {useState, createContext} from 'react'
+import React, {useState, createContext, ReactNode} from 'react'
 
 type AuthContextData = {
     user: UserProps
@@ -12,9 +12,13 @@ type UserProps = {
     token: string
 }
 
+type AuthProviderProps = {
+    children: ReactNode
+}
+
 export const AuthContext = createContext({} as AuthContextData)
 
-export function AuthProvider(){
+export function AuthProvider({children}: AuthProviderProps){
 
     const [user, setUser] = useState<UserProps>({
         id: '',
@@ -27,7 +31,7 @@ export function AuthProvider(){
 
     return(
         <AuthContext.Provider value={{user, isAthenticated}}>
-
+            {children}
         </AuthContext.Provider>
     )
 }
