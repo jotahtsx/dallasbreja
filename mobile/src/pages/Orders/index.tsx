@@ -3,7 +3,8 @@ import {
     View, 
     Text, 
     StyleSheet, 
-    TouchableOpacity
+    TouchableOpacity,
+    TextInput
 } from 'react-native'
 
 import {useRoute, RouteProp} from '@react-navigation/native'
@@ -30,6 +31,25 @@ export default function Orders(){
                     <Feather name="trash-2" size={28} color="#ECAE04" />
                 </TouchableOpacity>
             </View>
+
+            <TouchableOpacity style={styles.input}>
+                <Text>Bebidas</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.input}>
+                <Text>Cerveja Antártica</Text>
+            </TouchableOpacity>
+
+            <View style={styles.qtyContainer}>
+                <Text style={[styles.qtyText, {color: '#fff'}]}>Quantidade de Itens:</Text>
+                <TextInput
+                    style={[styles.input, {width: '100%', textAlign: 'center'}]}
+                    placeholderTextColor="#576574"
+                    keyboardType="numeric"
+                    value="1"
+                />
+            </View>
+
         </View>
     )
 }
@@ -47,5 +67,35 @@ const styles = StyleSheet.create({
         marginBottom: 12,
         alignItems: 'center',
         marginTop: 24
+    },
+    title: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        color: '#fff',
+        marginRight: 15
+    },
+    input: {
+        width: '100%',
+        backgroundColor: '#fff',
+        borderStyle: 'solid',
+        borderColor: '#c8d6e5',
+        borderWidth: 2,
+        borderRadius: 6,
+        height: 50,
+        marginBottom: 12,
+        justifyContent: 'center',
+        paddingHorizontal: 20,
+        fontSize: 20
+    },
+    qtyContainer: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    qtyText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 15,
+        marginTop: 10
     }
 })
