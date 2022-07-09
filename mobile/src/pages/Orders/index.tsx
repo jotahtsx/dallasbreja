@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import {
     View, 
     Text, 
@@ -25,6 +25,9 @@ type OrderRouteProps = RouteProp<RouteDetailsParams, 'Orders'>
 export default function Orders(){
     const route = useRoute<OrderRouteProps>()
     const navigation = useNavigation()
+
+    const [category, setCategory] = useState([])
+    const [categorySelected, setCategorySelected] = useState()
 
     async function handleCloseOrder(){
         try{
