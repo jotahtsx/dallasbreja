@@ -8,6 +8,9 @@ type AuthContextData = {
     user: UserProps
     isAuthenticated: boolean,
     signIn: (credentials: SignInProps) => Promise<void>
+    loadingAuth: boolean
+    loading: boolean
+    signOut: () => Promise<void>
 }
 
 type UserProps = {
@@ -38,6 +41,7 @@ export function AuthProvider({children}: AuthProviderProps){
     })
 
     const [loadingAuth, setLoadingAuth] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     const isAuthenticated = !!user.name
 
@@ -56,8 +60,9 @@ export function AuthProvider({children}: AuthProviderProps){
                     email: hasUser.email,
                     token: hasUser.token
                 })
-
             }
+
+            setLoading(false)
         }
 
         getUser()
@@ -100,8 +105,28 @@ export function AuthProvider({children}: AuthProviderProps){
         }
     }
 
+    async function signOut(){
+        await AsyncStorage.clear()
+        .then(() => {
+            setUser({
+                id: '',
+                name: '',
+                email: '',
+                token: ''
+            })
+        })
+    }
+
     return(
-        <AuthContext.Provider value={{user, isAuthenticated, signIn}}>
+        <AuthContext.Provider 
+        value={{
+            user, 
+            isAuthenticated, 
+            signIn, 
+            loadingAuth, 
+            loading,
+            signOut
+        }}>
             {children}
         </AuthContext.Provider>
     )
