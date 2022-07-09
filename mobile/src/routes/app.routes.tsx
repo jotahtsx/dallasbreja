@@ -6,7 +6,10 @@ import Orders from '../pages/Orders'
 
 export type StackPromsList = {
     Dashboard: undefined
-    Orders: undefined
+    Orders: {
+        number: number | string
+        order_id: string
+    }
 
 }
 
