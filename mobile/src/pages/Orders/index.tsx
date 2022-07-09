@@ -50,6 +50,15 @@ export default function Orders(){
                 />
             </View>
 
+            <View style={styles.actions}>
+                <TouchableOpacity style={styles.buttonIncrease}>
+                    <Text style={styles.buttonIncreaseText}>+</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonContinue}>
+                    <Text style={styles.buttonContinueText}>Avançar</Text>
+                </TouchableOpacity>
+            </View>
+
         </View>
     )
 }
@@ -97,5 +106,37 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 15,
         marginTop: 10
-    }
+    },
+    actions: {
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    buttonIncrease: {
+        width: '17%',
+        height: 50,
+        backgroundColor: '#0652DD',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 6,
+    },
+    buttonIncreaseText: {
+        fontSize: 30,
+        color: '#fff',
+        fontWeight: 'bold'
+    },
+    buttonContinue: {
+        width: '80%',
+        height: 50,
+        backgroundColor: '#ECAE04',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 6,
+    },
+    buttonContinueText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        color: '#000'
+    },
 })
