@@ -35,6 +35,8 @@ export default function Dashboard() {
             number: number, 
             order_id: response.data.id
         })
+
+        setNumber('')
     }
 
     return (
