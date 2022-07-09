@@ -2,15 +2,28 @@ import React from 'react'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 
 import Dashboard from '../pages/Dashboard'
+import Orders from '../pages/Orders'
 
-const Stack = createNativeStackNavigator()
+export type StackPromsList = {
+    Dashboard: undefined
+    Orders: undefined
+
+}
+
+const Stack = createNativeStackNavigator<StackPromsList>()
 
 function AppRoutes(){
     return(
         <Stack.Navigator>
-            <Stack.Screen 
+        <Stack.Screen 
             name='Dashboard' 
             component={Dashboard}
+            options={{headerShown: false}}
+        />
+
+        <Stack.Screen 
+            name='Orders'
+            component={Orders}
             options={{headerShown: false}}
         />
         </Stack.Navigator>
