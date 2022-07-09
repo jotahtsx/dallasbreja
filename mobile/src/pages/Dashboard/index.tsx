@@ -14,6 +14,8 @@ import {useNavigation} from '@react-navigation/native'
 import {NativeStackNavigationProp} from '@react-navigation/native-stack'
 import {StackPromsList} from '../../routes/app.routes'
 
+import {api} from '../../services/api'
+
 export default function Dashboard() {
     const navigation = useNavigation<NativeStackNavigationProp<StackPromsList>>()
     const [number, setNumber] = useState('')
@@ -23,9 +25,15 @@ export default function Dashboard() {
             return
         }
         
+        const response = await api.post('/order', {
+            table: Number(number)
+        })
+
+        //console.log(response.data)
+
         navigation.navigate('Orders', {
             number: number, 
-            order_id: '670e1dd4-5a0b-40c9-8907-56ce7979e3cc'
+            order_id: response.data.id
         })
     }
 
