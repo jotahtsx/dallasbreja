@@ -31,6 +31,13 @@ type ProductProps = {
     name: string
 }
 
+type ItemProps = {
+    id: string
+    product_id: string
+    name: string
+    amount: string | number
+}
+
 type OrderRouteProps = RouteProp<RouteDetailsParams, 'Orders'>
 
 export default function Orders(){
@@ -46,6 +53,7 @@ export default function Orders(){
     const [modalProductVisible, setModalProductVisible] = useState(false)
 
     const [amount, setAmount] = useState('1')
+    const [items, setItems] = useState<ItemProps[]>([])
 
     useEffect(() => {
         async function loadInfo(){
