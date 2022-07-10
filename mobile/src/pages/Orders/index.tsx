@@ -26,6 +26,11 @@ export type CategoryProps = {
     name: string
 }
 
+type ProductProps = {
+    id: string
+    name: string
+}
+
 type OrderRouteProps = RouteProp<RouteDetailsParams, 'Orders'>
 
 export default function Orders(){
@@ -35,6 +40,10 @@ export default function Orders(){
     const [category, setCategory] = useState<CategoryProps[] | []>([])
     const [categorySelected, setCategorySelected] = useState<CategoryProps>()
     const [modalCategoryVisible, setModalCategoryVisible] = useState(false)
+
+    const [products, setProducts] = useState<ProductProps[] | []>([])
+    const [productsSelected, setProductsSelected] = useState<ProductProps | undefined>()
+    const [modalProductVisible, setModalProductVisible] = useState(false)
 
     const [amount, setAmount] = useState('1')
 
@@ -96,9 +105,6 @@ export default function Orders(){
             </View>
 
             <View style={styles.actions}>
-                <TouchableOpacity style={styles.buttonIncrease}>
-                    <Text style={styles.buttonIncreaseText}>+</Text>
-                </TouchableOpacity>
                 <TextInput
                     style={[styles.input, {width: '65%', textAlign: 'center'}]}
                     placeholderTextColor="#fff"
@@ -106,6 +112,9 @@ export default function Orders(){
                     value={amount}
                     onChangeText={setAmount}
                 />
+                <TouchableOpacity style={styles.buttonIncrease}>
+                    <Text style={styles.buttonIncreaseText}>+</Text>
+                </TouchableOpacity>
             </View>
 
             <View>
