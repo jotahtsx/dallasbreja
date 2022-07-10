@@ -81,31 +81,34 @@ export default function Orders(){
                 <TouchableOpacity 
                     style={styles.input} 
                     onPress={() => setModalCategoryVisible(true)}>
-                    <Text>
+                    <Text style={{color: '#fff'}}>
                         {categorySelected?.name}
                     </Text>
                 </TouchableOpacity>
             )}
 
             <TouchableOpacity style={styles.input}>
-                <Text>Cerveja Antártica</Text>
+                <Text style={{color: '#fff'}}>Cerveja Antártica</Text>
             </TouchableOpacity>
 
             <View style={styles.qtyContainer}>
-                <Text style={[styles.qtyText, {color: '#fff'}]}>Quantidade de Itens:</Text>
-                <TextInput
-                    style={[styles.input, {width: '100%', textAlign: 'center'}]}
-                    placeholderTextColor="#576574"
-                    keyboardType="numeric"
-                    value={amount}
-                    onChangeText={setAmount}
-                />
+                <Text style={[styles.qtyText, {color: '#fff'}]}>Quantidade:</Text>
             </View>
 
             <View style={styles.actions}>
                 <TouchableOpacity style={styles.buttonIncrease}>
                     <Text style={styles.buttonIncreaseText}>+</Text>
                 </TouchableOpacity>
+                <TextInput
+                    style={[styles.input, {width: '65%', textAlign: 'center'}]}
+                    placeholderTextColor="#fff"
+                    keyboardType="numeric"
+                    value={amount}
+                    onChangeText={setAmount}
+                />
+            </View>
+
+            <View>
                 <TouchableOpacity style={styles.buttonContinue}>
                     <Text style={styles.buttonContinueText}>Avançar</Text>
                 </TouchableOpacity>
@@ -150,10 +153,11 @@ const styles = StyleSheet.create({
     },
     input: {
         width: '100%',
-        backgroundColor: '#fff',
+        backgroundColor: '#1e272e',
         borderStyle: 'solid',
-        borderColor: '#c8d6e5',
+        borderColor: '#485460',
         borderWidth: 2,
+        color: '#fff',
         borderRadius: 6,
         height: 50,
         marginBottom: 12,
@@ -162,25 +166,26 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     qtyContainer: {
-        flexDirection: 'column',
+        flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'space-between',
     },
     qtyText: {
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 15,
-        marginTop: 10
+        marginTop: 10,
     },
     actions: {
         width: '100%',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginBottom: 15
     },
     buttonIncrease: {
-        width: '17%',
+        width: '30%',
         height: 50,
-        backgroundColor: '#0652DD',
+        backgroundColor: '#33d9b2',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 6,
@@ -191,8 +196,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     buttonContinue: {
-        width: '80%',
-        height: 50,
+        width: '100%',
+        height: 60,
         backgroundColor: '#ECAE04',
         justifyContent: 'center',
         alignItems: 'center',

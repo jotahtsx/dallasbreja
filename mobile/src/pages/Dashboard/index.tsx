@@ -44,7 +44,7 @@ export default function Dashboard() {
             <Text style={styles.title}>Novo pedido</Text>
             <TextInput 
                 placeholder="Número da mesa"
-                placeholderTextColor="#576574"
+                placeholderTextColor="#fff"
                 style={styles.input}
                 keyboardType="numeric"
                 value={number}
@@ -76,10 +76,11 @@ const styles = StyleSheet.create({
         height: 50,
         textAlign: 'center',
         paddingHorizontal: 20,
-        backgroundColor: '#fff',
+        backgroundColor: '#1e272e',
         marginBottom: 15,
         borderStyle: 'solid',
-        borderColor: '#c8d6e5',
+        borderColor: '#485460',
+        color: '#fff',
         borderWidth: 2,
         borderRadius: 10,
         fontSize: 16

@@ -1,4 +1,5 @@
-import React from "react"
+import React, {useEffect} from "react"
+
 import {
     View,
     Text,
@@ -38,6 +39,7 @@ export function ModalPicker({options, handleCloseModal, selectedItem}: ModalPick
     ))
 
     return(
+
         <TouchableOpacity style={styles.container} onPress={handleCloseModal}>
             <View style={styles.content}>
                 <ScrollView showsHorizontalScrollIndicator={false}>
@@ -55,21 +57,23 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     content: {
-        width: WIDTH - 20,
-        height: HEIGHT / 2,
+        width: WIDTH - 30,
+        height: HEIGHT / 3,
+        position: 'absolute',
+        top: '22.8%',
         backgroundColor: '#fff',
         borderWidth: 1,
-        borderColor: '#c8d6e5',
+        borderColor: '#fff',
         borderRadius: 4
     },
     option: {
         alignItems: 'flex-start',
-        borderTopWidth: 0.8,
-        borderTopColor: '#c8d6e5',
+        borderBottomWidth: 0.8,
+        borderBottomColor: '#c8d6e5'
     },
     item: {
         margin: 18,
         fontSize: 14,
-        color: '#000'
+        color: '#000',
     }
 })
