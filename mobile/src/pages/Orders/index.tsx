@@ -58,6 +58,23 @@ export default function Orders(){
         loadInfo()
     }, [])
 
+    useEffect(() => {
+
+        async function loadProducts(){
+            const response = await api.get('/category/product', {
+                params: {
+                    category_id: categorySelected?.id
+                }
+            })
+
+            setProducts(response.data)
+            setProductsSelected(response.data[0])
+        }
+
+        loadProducts()
+
+    }, [categorySelected])
+
     async function handleCloseOrder(){
         try{
             await api.delete('/order', {
@@ -96,9 +113,11 @@ export default function Orders(){
                 </TouchableOpacity>
             )}
 
-            <TouchableOpacity style={styles.input}>
-                <Text style={{color: '#fff'}}>Cerveja Antártica</Text>
-            </TouchableOpacity>
+            {products.length !== 0 &&(
+                <TouchableOpacity style={styles.input}>
+                    <Text style={{color: '#fff'}}>{productsSelected?.name}</Text>
+                </TouchableOpacity>
+            )}
 
             <View style={styles.qtyContainer}>
                 <Text style={[styles.qtyText, {color: '#fff'}]}>Quantidade:</Text>
