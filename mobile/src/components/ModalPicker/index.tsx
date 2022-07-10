@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
     },
     content: {
         width: WIDTH - 30,
-        height: HEIGHT / 3,
+        height: 'auto',
+        maxHeight: 167,
         position: 'absolute',
         top: '22.8%',
         backgroundColor: '#fff',
